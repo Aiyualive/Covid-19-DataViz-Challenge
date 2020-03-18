@@ -1,0 +1,90 @@
+\newpage
+\section*{A2.5}
+\textbf{a)}
+\begin{align*}
+      \texttt{let G } &= 6.67408\cdot 10^{11}\frac{m^3}{kg \cdot s^2}\\
+      \texttt{let m1 }&= 1000.0\;kg\\
+      \texttt{let m2 }&= 2000.0\; kg\\
+      \texttt{let r } &= 3000.0\; m\\
+      \texttt{let f } &= \frac{G\cdot m1 \cdot m2}{r \cdot r}
+\end{align*}
+I would argue that G should be absolute \texttt{<|G|>}, since the gravitational constant always remains the same no matter the context. \\
+
+f should be relative \texttt{<f>}, since this specific assignment is dependent on multiple different factors. Meaning the force is relative to the context. The calculated value also does not have an absolute scale of measure such as for Kelvin ($0 K\leq$) and Celsius($-273.15^\circ$C $\leq$).\\
+
+m2, m1 should be \texttt{<|m2|>, <|m1|>}, since these are exact values of the two masses.\\
+The distance between the two masses, r, should be \texttt{<r>}, since it measures a difference in positions.\\
+
+\textbf{b)}\\
+$Absolute + Relative = Absolute$\\
+Example of adding an absolute temperature measure to a relative: \\
+We have $37^\circ$C added to a temperature difference of $5^\circ$C, which equates to $42^\circ$C. The result is an absolute measure i.e. the exact value of a temperature.\\
+\underline{Rules}: It should not be allowed to add a relative to an absolute, if the resulting absolute exceeds what is allowed for the unit. I.e. adding a relative such that it exceeds the speed of light, which is the maximum attainable velocity.\\
+
+$Absolute + Absolute = Absolute$\\
+If we have two objects and add them together to form one, we would the get the exact measure of the resulting object.\\
+\underline{Rules}: Same as before. It should not be allowed to exceed what is allowed by physical limits.\\
+
+$Relative + Relative = Relative$\\
+A temperature difference added with a temperature difference would just equate to a greater difference. Thus it makes sense that the resulting measure is relative.\\
+\underline{Rules}: No rules that I can think of\\
+
+\textbf{c)}\\
+$Absolute - Relative = Absolute$\\
+This must be absolute as the example in $Absolute + Relative$ can simply result in $32^\circ$C.\\
+\underline{Rules}: It must not be possible to subtract a value such that the resulting value is under the minimum limit. I.e for temperature $-273.15^\circ$C.\\
+
+$Absolute - Absolute = Relative$\\
+Subtracting two absolute temperatures, would result in their difference. Thus the result is relative.\\
+
+$Relative - Absolute = Relative$\\
+If we have a difference subtracted with an exact value, the result would be a lesser difference. Thus the result is relative.\\
+
+$Relative - Relative = Relative$\\
+Subtracting a difference from a difference must equate to another difference. Thus this expression must result in relative.\\
+
+\textcolor{red}{\textbf{Modification:}} No other rules that I can think of except the fact that the resulting value must not exceed the physical limitations of the unit.\\
+	
+\textbf{d)}\\
+\textcolor{red}{\textbf{Modified(d):}}\\
+$Absolute \cdot Relative = Relative$\\
+If we consider:\\
+Abs: an exact speed measure\\
+Rel: the difference in speed of two cars\\
+Then when multiplied we would gain an amplification of the speed difference -- result being relative. However, we could also interpret the result as an amplification of the exact speed measure -- result being absolute. I think it is most sensible to think of the result as a greater speed difference. \\
+
+$Absolute \cdot Absolute = Absolute$\\
+An absolute speed multiplied by an absolute speed must result in the amplification of either absolute speeds. Thus the result is absolute.\\
+
+$Relative \cdot Relative = relative$\\
+Having two differences in distances multiplied, would result in a squared difference, which can be interpreted as relative.\\
+
+In general, multiplication of two measures using the same underlying unit results in the unit squared. This may impose some new restrictions as to what is allowed for the resulting unit. I.e there is a physical limititation to speed, v, being the speed of light. So one must check the result for these restrictions.\\
+
+\textbf{e)}\\
+\textcolor{red}{\textbf{Modified(i, ii)}}\\
+i)\\
+One could define the following syntax:
+\lstset{
+	xleftmargin=3em,
+	literate={->}{$\rightarrow$}{2}
+}
+\begin{lstlisting}
+Main     -> [ <unit> , Related ]
+Related  -> Scale <unit>, Related
+Related  -> Scale <unit>
+Scale    -> factor
+\end{lstlisting}
+With such syntax and units: \textit{Celsius}, \textit{Kelvin}, \textit{Fahrenheit}, we would be able to define multiple relationships between temperature measures, whilst allowing enough information to do the conversions:\\
+\texttt{ [ <Celsius>, 32 <Fahrenheit> , 273.15 <Kelvin> ]} \\
+
+ii)\\
+For this, it would make sense to implement a precedence hierarchy similarly to the arithmetic operators. One could simply enforce an user defined hierarchy according to the specified relationship in i).\\
+\textbf{\%prec Celsius Kelvin Fahrenheit}\\
+Basically meaning: $C > K > F$. \\
+With this we would be able to clearly define the resulting unit of an addition:\\
+\tab$C + K + F = C$ \\
+\tab$K + F = K$ \\
+\tab$F + K = K$ \\
+\tab$F + F =F$ \\
+\tab$C+ F =C$ \\

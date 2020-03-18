@@ -1,0 +1,45 @@
+\section*{A1.1}  %(25) Solve Exercise 2.3 from the notes. Remember to cite your sources.
+\begin{center}
+  \huge{Logo}
+\end{center}
+%\textbf{Why the language was designed}\\
+The turtle takes its attentive steps towards its predetermined destination. Once said destination is reached it is clueless. It waits (while sneaking into its secure shell). With its innate and unbounded wisdom, the turtle has philosophical debates inside its own mind about what to do next... Until a creative instinct suddenly appears, which kickstarts the hidden engine within the turtle's shell. Its mind filled with immense imagination as if enlightened by the Turtle God himself, it suddenly runs around in a way such that when tracking its footsteps from start to end position, it would form the perfect outline of a 3-dimensional-looking sphere with additional gridlines painted in every color imaginable. If the focus is instead redirected away from the computer screen, one would discover a young child from elementary school sitting in exhilaration and excitement just in front the computer. He is in fact the mastermind behind all the wizardry of the blinking/glowing triangle-like turtle on the screen.\\
+\\
+Logo(designed in 1967\footnote{Wikipedia, Logo\_(programming\_language)}), aka. the turtle language, is a programming language born out of a genuine desire to make programming more interesting for young children. By providing a more interactive and graphic-based language the idea was that it would make it easier for children to learn the basics of programming as well as provide a solid foundation into the applications of maths. In the eyes of the inventors: Wally Feurzeig, Seymour Papert and Cynthia Solomon, Logo represents a certain philosophy of learning; best described by Papert himself: \textit{"has to do with making things and especially to do with learning by making, an idea that includes but goes far beyond the idea of learning by doing."}\footnote{Papert, 1999}. He saw gaps in the way conventional teaching was carried out. He believed that education system during his time (most likely holds the same belief even to this day) was hopefully outdated in the sense that teachers are essentially regurgitating their knowledge, passing the information down to students/children without having a close empathic learning collaboration between students and teachers.\footnote{Papert, 1999}
+
+This "learning culture" of logo envisioned by its founders was to a certain extent put into practice in several different countries such as Agentina, Costa Rica, Thailand and Russia. Especially in developing nations like Costa Rica, investing in childrens' "technological" learning was believed to lead to a brighter future\footnote{Papert, 1999}. This is in accordance to what Papert had in mind: \textit{"From the beginning, its main emphasis has been on the development of creativity, thinking skills and problem-solving abilities — long-term benefits that are expected to impact upon the country’s socio-economic and technological development."}
+
+Logo drew its inspiration from Lisp\footnote{The Logo Foundation}, which already pioneered many ideas in computer science such as: automatic storage management(ASM), dynamic typing(DT), conditionals, recursion(R) and the read-eval-print loop(REPL)\footnote{Wikipedia, Lisp} - all of which are used within the original Logo language. These ideas are arguably most ideal for beginners wanting to learn programming. Arguments for simpler language learning are given:
+\begin{itemize}
+\item ASM: Kids would not need to worry about the size of i.e. an array beforehand like in C.
+\item DT: Starting out without type declarations arguably makes programming easier to learn, although when sacrificing interpretation efficiency - Logo being an interpreted language. So it is in general slow anyways. This also makes Logo more flexible since words(string) and numbers(words) can be used arithmetically.
+\item R: supports a more functional way to do looping and in general a good "mathematical" concept to learn.
+\item REPL: makes the language more interactive for kids giving immediate feedback on the statements. Coupled with descriptive and straightforward error messages like "I don't know how to <procedure>", also aids in the debugging process.\footnote{The Logo Foundation}
+\item Procedural: Complex problems are solved by implementing various procedures, thus extending one's vocabulary just like normal language learning.
+\end{itemize}
+\\
+Most characteristic for Logo is the turtle graphics interface, which is a key distinghuishing feature. Introducing a graphical element to a programming language, makes it more suitable for beginning programmers, as it the learning process becomes more interactive and brain stimulating(from the visual sense). The idea of having a graphical interface integrated into a programming language inspired later languages like Smalltalk and Scratch. In the spirit of teaching kids to program, these two languages were also intended for basic programming concepts learning. Especially evident for Scratch, is the way it pre encapsulates the syntax into block diagrams, such that the syntax would not be a barrier for learning.
+
+Given the laid out ideas, it is evident how a programming language like Logo might be well-suited for kids trying to grasp the concept of programming. It has actually been shown by researchers that programming with Logo enhances creativity\footnote{Pardamean}. However, given the straightforward and simple nature it quickly becomes a rather verbose task, when creating a larger and more complex program.
+
+% ----- References -----
+\section*{References}
+\begin{itemize}
+\item
+Wikipedia contributors. (2018, January 23). Logo (programming language). In Wikipedia, The Free Encyclopedia. Retrieved 04:20, March 1, 2018, from \url{https://en.wikipedia.org/w/index.php?title=Logo_(programming_language)&oldid=821854813}
+
+\item Papert, Seymor et al. (1999) \textit{Logo Philosophy and Implementation}. Retrieved from \verb|http://www.microworlds.com/company/philosophy.pdf|
+
+\item Crook, Stamati. \textit{Embedding Scratch in the Classroom}. International Journal of Learning and Media Vol. 1, No. 4, Pages 17-21. No date.
+
+\item The Logo foundation: \url{http://el.media.mit.edu/logo-foundation/what_is_logo/logo_programming.html}
+
+\item Wikipedia contributors. (2017, December 24). Lisp (programming language). In Wikipedia, The Free Encyclopedia. Retrieved 07:15, March 1, 2018, from \url{https://en.wikipedia.org/w/index.php?title=Lisp_(programming_language)&oldid=816850347}
+
+\item BENS PARDAMEAN, EVELIN, HONNI \textit{The Effect of Logo Programming Language for
+Creativity and Problem Solving}.
+Graduate Program of Management System Information.
+Bina Nusantara University.
+Jl. Kebon Jeruk Raya No. 27, Kebon Jeruk, Jakarta Barat
+INDONESIA: \url{http://www.wseas.us/e-library/conferences/2011/Jakarta/EACT/EACT-23.pdf}
+\end{itemize}

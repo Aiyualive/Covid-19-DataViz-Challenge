@@ -1,0 +1,120 @@
+\newpage
+\section*{Appendix}
+\begin{lstlisting}[language=Python]
+DIGIT     = "0123456789"
+OPERATORS = "-+*/"
+
+# Dictionary for determining the precedence
+# Quick and easy method, but duplicated values
+prcd   = {"+" : 1,
+             "-" : 1,
+             "/" : 2,
+             "*" : 2,
+             "(" : -1,
+             ")" : -1,
+             "NULL": -1,
+            }
+
+### Stack inspiration:
+### http://interactivepython.org/runestone/static/pythonds/BasicDS/ImplementingaStackinPython.html
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def push(self, item):
+        self.items.append(item)
+
+    # Modified pop in the case for an empty stack
+    def pop(self):
+        if self.isEmpty():
+            return ""
+        else:
+            return self.items.pop()
+
+    # Checking if empty and setting the dictionary key accordingly
+    def peek(self):
+        if self.isEmpty():
+            return "NULL"
+        else:
+            return self.items[len(self.items)-1]
+
+    def size(self):
+        return len(self.items)
+
+### Algorithm for infix to postfix conversion inspiration:
+### http://www.c4learn.com/data-structure/algorithm-for-infix-to-postfix-conversion-using-stack/
+### Remarks: all operators are left associative
+### Exp: valid infix expression as a string without spaces
+def infToPost(exp):
+    s = Stack()
+    l = len(exp)
+    output = ""
+
+    # Loop through every character
+    for i in range(l):
+        c = exp[i]
+
+        if (c in DIGIT):
+            output += c
+
+        if (c in OPERATORS):
+            if (s.isEmpty()):
+                s.push(c)
+            else: # Non-empty
+                while(prcd[s.peek()] >= prcd[c]):
+                    output += s.pop()
+                s.push(c)
+
+        if (c == "("):
+            s.push(c)
+
+        if (c == ")"):
+            popped = s.pop()
+            while(popped != OPar):
+                output += popped
+                popped = s.pop()
+
+
+    while(s.isEmpty() == False):
+        output += s.pop()
+
+    return output
+
+### Inspired by:
+### https://www.geeksforgeeks.org/postfix-prefix-conversion/
+### Remarks: all operators are left associative
+### Exp: valid infix expression as a string without spaces
+def infToPreAndPost(exp):
+
+    # Converting to Postfix
+    post = infToPost(exp)
+
+    # Converting to Prefix
+    s = Stack()
+    l = len(post)
+    pre = ""
+
+    for i in range(l):
+        c = post[i]
+        if (c in DIGIT):
+            s.push(c)
+        if (c in OPERATORS):
+            pop1 = s.pop()
+            pop2 = s.pop()
+            pre = c + pop2 + pop1
+            s.push(pre)
+
+    return pre, post
+
+
+### Testing for exercise expression ###
+exTest = "(2+3*(4-5))*6/7"
+print("Infix: ", exTest)
+print("Pre: %s\nPost: %s" % infToPreAndPost(exTest))
+print("\n")
+print("Exp Pre: /∗+2∗3−4567")
+print("Exp Post: 2345−∗+6∗7/")
+\end{lstlisting}

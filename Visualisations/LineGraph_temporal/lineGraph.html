@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+</style>
+<body>
+
+<!-- load the d3.js library -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 500, bottom: 50, left: 50},
+    width = 1200 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+
+// parse the ObservationDate / time 01/22/2020
+var parseTime = d3.timeParse("%m/%d/%Y");
+
+// set the ranges
+var x = d3.scaleTime().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
+// var palette = ["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]
+var palette = d3.scaleOrdinal(d3.schemeCategory10);
+// define the 1st line
+var china = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.china); });
+
+var japan = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.japan); });
+
+var singapore = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.singapore); });
+
+var thailand = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.thailand); });
+
+var hongkong = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.hongkong); });
+
+var southkorea = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.southkorea); });
+
+var italy = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.italy); });
+
+var iran = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.iran); });
+
+var us = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.us); });
+
+var taiwan = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.taiwan); });
+
+var bahrain = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.bahrain); });
+
+var germany = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.germany); });
+
+var kuwait = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.kuwait); });
+
+var france = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.france); });
+
+var spain = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.spain); });
+
+var uk = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.uk); });
+
+var switzerland = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.switzerland); });
+
+var malaysia = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.malaysia); });
+
+var iraq = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.iraq); });
+
+var norway = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.norway); });
+
+var netherlands = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.netherlands); });
+
+var sweden = d3.line()
+    .x(function(d) { return x(d.ObservationDate); })
+    .y(function(d) { return y(d.sweden); });
+var countries = [japan, singapore, thailand, hongkong, southkorea, italy, iran, us, taiwan, bahrain, germany, kuwait, france, spain, uk, switzerland, malaysia, iraq, norway, netherlands];
+var names = ['Japan', 'Singapore', 'Thailand', 'Hong Kong', 'South Korea', 'Italy', 'Iran', 'USA', 'Taiwan', 'Bahrain', 'Germany', 'Kuwait', 'France', 'Spain', 'UK', 'Switzerland', 'Malaysia', 'Iraq', 'Norway', 'Netherlands'];
+// append the svg obgect to the body of the page
+// appends a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+// Get the data
+d3.csv("linedata.csv", function(error, data) {
+  if (error) throw error;
+
+    // format the data
+    data.forEach(function(d) {
+        d.ObservationDate = parseTime(d.ObservationDate);
+        d.china = +d.China;
+        d.japan = +d.Japan;
+        d.singapore = +d.Singapore;
+        d.thailand = +d.Thailand;
+        d.hongkong = +d.HongKong;
+        d.southkorea = +d.SouthKorea;
+        d.italy = +d.Italy;
+        d.iran = +d.Iran;
+        d.us = +d.US;
+        d.taiwan = +d.Taiwan;
+        d.bahrain = +d.Bahrain;
+        d.germany = +d.Germany;
+        d.kuwait = +d.Kuwait;
+        d.france = +d.France;
+        d.spain = +d.Spain;
+        d.uk = +d.UK;
+        d.switzerland = +d.Switzerland;
+        d.malaysia = +d.Malaysia;
+        d.iraq = +d.Iraq;
+        d.norway = +d.Norway;
+        d.netherlands = +d.Netherlands;
+    });
+
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.ObservationDate; }));
+    y.domain([0, d3.max(data, function(d) {
+        return Math.max(d.southkorea); })]);
+    // data.forEach(function(d){
+    //     console.log(d)
+    // })
+    var  legendSpace = width/data.length;
+    // Add the valueline path.
+    countries.forEach(function(d,i){
+        // console.log(i)
+        // Add the valueline2 path.
+        svg.append("path")
+            .data([data])
+            .attr("class", "line")
+            .style("stroke", palette(i))
+            .attr("d", d);
+
+        // Add the Legend
+        svg.append("text")
+            .attr("x", width + 30) //(legendSpace/2)+(i*3)*legendSpace)  // space legend
+            .attr("y", i*20  + 15)
+            .attr("class", "legend")    // style the legend
+            .style("fill", palette(i))
+            .text(names[i]);
+    })
+    // Add the X Axis
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    // Add the Y Axis
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+});
+
+</script>
+</body>

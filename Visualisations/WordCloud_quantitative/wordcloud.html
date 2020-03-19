@@ -1,0 +1,151 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="cloud.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+      drawWordCloud();
+
+      function drawWordCloud(){
+        var common = "poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
+
+        var word_count = {'South Korea': 6975.476637685445,
+ 'Italy': 3833.3476843640524,
+ 'Iran': 3626.10616177137,
+ 'Japan': 410.76014358190395,
+ 'France': 353.67565232882964,
+ 'Germany': 325.1334067022926,
+ 'Spain': 275.494718656141,
+ 'Singapore': 136.50639212691672,
+ 'Hong Kong': 130.30155612114777,
+ 'Switzerland': 111.68704810384095,
+ 'UK': 105.48221209807203,
+ 'Kuwait': 69.49416326461215,
+ 'Norway': 69.49416326461215,
+ 'Bahrain': 64.530294459997,
+ 'Malaysia': 62.04836005768942,
+ 'Thailand': 53.3615896496129,
+ 'Taiwan': 52.120622448459116,
+ 'Netherlands': 47.156753643843956,
+ 'Iraq': 43.43385204038259,
+ 'Sweden': 43.43385204038259,
+ 'Austria': 35.988048833459864,
+ 'India': 34.74708163230608,
+ 'United Arab Emirates': 33.506114431152284,
+ 'Iceland': 32.2651472299985,
+ 'Belgium': 28.54224562653713,
+ 'San Marino': 19.855475218460615,
+ 'Vietnam': 19.855475218460615,
+ 'Israel': 18.614508017306825,
+ 'Oman': 18.614508017306825,
+ 'Lebanon': 16.13257361499925,
+ 'Algeria': 14.89160641384546,
+ 'Croatia': 12.409672011537884,
+ 'Denmark': 12.409672011537884,
+ 'Ecuador': 12.409672011537884,
+ 'Macau': 12.409672011537884,
+ 'Greece': 11.168704810384096,
+ 'Czech Republic': 9.927737609230308,
+ 'Qatar': 9.927737609230308,
+ 'Belarus': 7.44580320692273,
+ 'Finland': 7.44580320692273,
+ 'Ireland': 7.44580320692273,
+ 'Mexico': 6.204836005768942,
+ 'Pakistan': 6.204836005768942,
+ 'Portugal': 6.204836005768942,
+ 'Brazil': 4.963868804615154,
+ 'Romania': 4.963868804615154,
+ 'Senegal': 4.963868804615154,
+ 'Azerbaijan': 3.722901603461365,
+ 'Georgia': 3.722901603461365,
+ 'New Zealand': 3.722901603461365,
+ 'Philippines': 3.722901603461365,
+ 'Russia': 3.722901603461365,
+ 'Saint Barthelemy': 3.722901603461365,
+ 'Egypt': 2.481934402307577,
+ 'Estonia': 2.481934402307577,
+ 'Hungary': 2.481934402307577,
+ 'Indonesia': 2.481934402307577,
+ 'Afghanistan': 1.2409672011537884,
+ 'Andorra': 1.2409672011537884,
+ 'Argentina': 1.2409672011537884,
+ 'Armenia': 1.2409672011537884,
+ 'Cambodia': 1.2409672011537884,
+ 'Chile': 1.2409672011537884,
+ 'Dominican Republic': 1.2409672011537884,
+ 'Faroe Islands': 1.2409672011537884,
+ 'Gibraltar': 1.2409672011537884,
+ 'Jordan': 1.2409672011537884,
+ 'Latvia': 1.2409672011537884,
+ 'Liechtenstein': 1.2409672011537884,
+ 'Lithuania': 1.2409672011537884,
+ 'Luxembourg': 1.2409672011537884,
+ 'Monaco': 1.2409672011537884,
+ 'Morocco': 1.2409672011537884,
+ 'Nepal': 1.2409672011537884,
+ 'Nigeria': 1.2409672011537884,
+ 'North Macedonia': 1.2409672011537884,
+ 'Poland': 1.2409672011537884,
+ 'Saudi Arabia': 1.2409672011537884,
+ 'Sri Lanka': 1.2409672011537884,
+ 'Tunisia': 1.2409672011537884,
+ 'Ukraine': 1.2409672011537884,
+ 'China': 99613.67820381575,
+ 'US': 189.8679817765296,
+ 'Australia': 64.530294459997,
+ 'Canada': 40.95191763807502}
+
+        console.log(word_count)
+        var svg_location = "#chart";
+        var width = $(document).width();
+        var height = $(document).height();
+
+        var fill = d3.scale.category20();
+
+        var word_entries = d3.entries(word_count);
+
+        var xScale = d3.scale.linear()
+           .domain([0, d3.max(word_entries, function(d) {
+              return d.value;
+            })
+           ])
+           .range([10,100]);
+
+        d3.layout.cloud().size([width, height])
+          .timeInterval(20)
+          .words(word_entries)
+          .fontSize(function(d) { return xScale(+d.value); })
+          .text(function(d) { return d.key; })
+          .rotate(function() { return ~~(Math.random() * 2) * 90; })
+          .font("Impact")
+          .on("end", draw)
+          .start();
+
+        function draw(words) {
+          d3.select(svg_location).append("svg")
+              .attr("width", width)
+              .attr("height", height)
+            .append("g")
+              .attr("transform", "translate(" + [width >> 1, height >> 1] + ")")
+            .selectAll("text")
+              .data(words)
+            .enter().append("text")
+              .style("font-size", function(d) { return xScale(d.value) + "px"; })
+              .style("font-family", "Impact")
+              .style("fill", function(d, i) { return fill(i); })
+              .attr("text-anchor", "middle")
+              .attr("transform", function(d) {
+                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+              })
+              .text(function(d) { return d.key; });
+        }
+
+        d3.layout.cloud().stop();
+      }
+    </script>
+  </body>
+</html>

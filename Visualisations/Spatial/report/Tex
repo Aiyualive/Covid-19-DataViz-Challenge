@@ -1,7 +1,0 @@
-#!/bin/bash
-
-file_t="master.tex"
-file_p="master.pdf"
-pdflatex $file_t
-open -a Skim $file_p 
-latexmk -pdf -pvc $file_t

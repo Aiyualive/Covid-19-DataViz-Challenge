@@ -14,7 +14,7 @@ To reproduce my results:
 Covid-19: [https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset]
 
 ### Supplementary Datasets
-SARSARS dataset: [https://www.kaggle.com/imdevskp/sars-outbreak-2003-complete-dataset] 
+SARS dataset: [https://www.kaggle.com/imdevskp/sars-outbreak-2003-complete-dataset]
 GDP dataset: [https://www.kaggle.com/ibrahimmukherjee/gdp-world-bank-data\#public-education-expenditure-as-share-of-gdp.csv]
 
 ## Inspirations/sources

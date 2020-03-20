@@ -14,14 +14,14 @@ To reproduce my results:
 Covid-19: [https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset]
 
 ### Supplementary Datasets
-SARS dataset: [https://www.kaggle.com/imdevskp/sars-outbreak-2003-complete-dataset]
+SARS dataset: [https://www.kaggle.com/imdevskp/sars-outbreak-2003-complete-dataset]  
 GDP dataset: [https://www.kaggle.com/ibrahimmukherjee/gdp-world-bank-data\#public-education-expenditure-as-share-of-gdp.csv]
 
 ## Inspirations/sources
-World Map: [https://datamaps.github.io/]
-Stacked Horizontal Bar Chart: [https://bl.ocks.org/Andrew-Reid/0aedd5f3fb8b099e3e10690bd38bd458]
-Word Cloud: [https://github.com/jasondavies/d3-cloud]
-Group Bar Chart: [https://bl.ocks.org/bricedev/0d95074b6d83a77dc3ad]
-Box Plot: [https://bl.ocks.org/rjurney/e04ceddae2e8f85cf3afe4681dac1d74]
-Scatter Plot: [https://bl.ocks.org/mthh/e9ebf74e8c8098e67ca0a582b30b0bf0]
+World Map: [https://datamaps.github.io/]  
+Stacked Horizontal Bar Chart: [https://bl.ocks.org/Andrew-Reid/0aedd5f3fb8b099e3e10690bd38bd458]  
+Word Cloud: [https://github.com/jasondavies/d3-cloud]  
+Group Bar Chart: [https://bl.ocks.org/bricedev/0d95074b6d83a77dc3ad]  
+Box Plot: [https://bl.ocks.org/rjurney/e04ceddae2e8f85cf3afe4681dac1d74]  
+Scatter Plot: [https://bl.ocks.org/mthh/e9ebf74e8c8098e67ca0a582b30b0bf0]  
 Multiple Line Chart: [http://bl.ocks.org/Matthew-Weber/5645518]
